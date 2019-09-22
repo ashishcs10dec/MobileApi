@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4f9b0a1dba344a549519bb8c21a5fc68" Name="Diagram1">
+        <EntityTypeShape EntityType="ObickeModel.BikeCityWise" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ObickeModel.BikeInformation" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ObickeModel.CityArea" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ObickeModel.CityTable" Width="1.5" PointX="1.5" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ObickeModel.ImageDetail" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="ObickeModel.PaymentDetail" Width="1.5" PointX="6" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ObickeModel.PlacedOrder" Width="1.5" PointX="8.25" PointY="10.625" IsExpanded="true" />
+        <AssociationConnector Association="ObickeModel.FK_BikeCityWise_BikeInformation" ManuallyRouted="false" />
+        <AssociationConnector Association="ObickeModel.FK_BikeCityWise_CityAreas" ManuallyRouted="false" />
+        <AssociationConnector Association="ObickeModel.FK_BikeCityWise_CityTable" ManuallyRouted="false" />
+        <AssociationConnector Association="ObickeModel.FK_ImageDetails_BikeInformation" ManuallyRouted="false" />
+        <AssociationConnector Association="ObickeModel.FK_CityAreas_CityTable" ManuallyRouted="false" />
+        <AssociationConnector Association="ObickeModel.FK_PlacedOrder_PaymentDetails" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ObickeModel.TransactionDetail" Width="1.5" PointX="6.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ObickeModel.MobileOtp" Width="1.5" PointX="8.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ObickeModel.AddToCart" Width="1.5" PointX="8.375" PointY="4.75" />
+        <EntityTypeShape EntityType="ObickeModel.CartDetail" Width="1.5" PointX="3" PointY="2.625" />
+        <AssociationConnector Association="ObickeModel.FK_CartDetails_BikeInformation" />
+        <EntityTypeShape EntityType="ObickeModel.UserDetail" Width="1.5" PointX="3.75" PointY="16.75" />
+        <AssociationConnector Association="ObickeModel.FK_PaymentDetails_UserDetails" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

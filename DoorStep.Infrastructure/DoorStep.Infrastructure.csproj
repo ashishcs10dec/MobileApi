@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{64816CB9-3864-4466-A43C-AE91DE1E2918}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DoorStep.Infrastructure</RootNamespace>
+    <AssemblyName>DoorStep.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Database\AddToCart.cs">
+      <DependentUpon>Obicke.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\BikeCityWise.cs">
+      <DependentUpon>Obicke.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\BikeInformation.cs">
+      <DependentUpon>Obicke.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\CartDetail.cs">
+      <DependentUpon>Obicke.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\CityArea.cs">
+      <DependentUpon>Obicke.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\CityTable.cs">
+      <DependentUpon>Obicke.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ImageDetail.cs">
+      <DependentUpon>Obicke.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MobileOtp.cs">
+      <DependentUpon>Obicke.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Obicke.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Obicke.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Obicke.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Obicke.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Obicke.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Obicke.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Database\PaymentDetail.cs">
+      <DependentUpon>Obicke.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\PlacedOrder.cs">
+      <DependentUpon>Obicke.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\stpGetBikedetailsInfo_Result.cs">
+      <DependentUpon>Obicke.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\TransactionDetail.cs">
+      <DependentUpon>Obicke.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\UserDetail.cs">
+      <DependentUpon>Obicke.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Implementation\BikeDetails.cs" />
+    <Compile Include="Implementation\BikeHomeDetails.cs" />
+    <Compile Include="Implementation\MobileApi.cs" />
+    <Compile Include="Implementation\Payments.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IBikeDetails.cs" />
+    <Compile Include="Repository\IBikeHomeDetails.cs" />
+    <Compile Include="Repository\IMobileApi.cs" />
+    <Compile Include="Repository\IPayments.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Database\Obicke.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Obicke.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Database\Obicke.edmx.diagram">
+      <DependentUpon>Obicke.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DoorStepModel\DoorStepModel.csproj">
+      <Project>{66d51f06-7e06-429e-9829-38b40ea41cc6}</Project>
+      <Name>DoorStepModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Database\Obicke.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Obicke.edmx</DependentUpon>
+      <LastGenOutput>Obicke.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database\Obicke.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Obicke.edmx</DependentUpon>
+      <LastGenOutput>Obicke.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

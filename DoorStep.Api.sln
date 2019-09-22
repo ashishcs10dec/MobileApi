@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoorStep.Api", "DoorStep.Api\DoorStep.Api.csproj", "{8AB4596F-059A-4A34-92F5-12928F32E807}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoorStep.Core", "DoorStep.Core\DoorStep.Core.csproj", "{2253E423-2320-47E6-97B8-F657ADB0A6F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoorStep.Infrastructure", "DoorStep.Infrastructure\DoorStep.Infrastructure.csproj", "{64816CB9-3864-4466-A43C-AE91DE1E2918}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoorStepModel", "DoorStepModel\DoorStepModel.csproj", "{66D51F06-7E06-429E-9829-38B40EA41CC6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8AB4596F-059A-4A34-92F5-12928F32E807}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AB4596F-059A-4A34-92F5-12928F32E807}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AB4596F-059A-4A34-92F5-12928F32E807}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AB4596F-059A-4A34-92F5-12928F32E807}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2253E423-2320-47E6-97B8-F657ADB0A6F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2253E423-2320-47E6-97B8-F657ADB0A6F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2253E423-2320-47E6-97B8-F657ADB0A6F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2253E423-2320-47E6-97B8-F657ADB0A6F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64816CB9-3864-4466-A43C-AE91DE1E2918}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64816CB9-3864-4466-A43C-AE91DE1E2918}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64816CB9-3864-4466-A43C-AE91DE1E2918}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64816CB9-3864-4466-A43C-AE91DE1E2918}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66D51F06-7E06-429E-9829-38B40EA41CC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66D51F06-7E06-429E-9829-38B40EA41CC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66D51F06-7E06-429E-9829-38B40EA41CC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66D51F06-7E06-429E-9829-38B40EA41CC6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

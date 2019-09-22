@@ -1,0 +1,908 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ObickeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AddToCart">
+          <Key>
+            <PropertyRef Name="CartId" />
+          </Key>
+          <Property Name="CartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SecretToken" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BikeId" Type="int" Nullable="false" />
+          <Property Name="InitiatedThrough" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BikeCityWise">
+          <Key>
+            <PropertyRef Name="BCId" />
+          </Key>
+          <Property Name="BCId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BikeId" Type="int" Nullable="false" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="CAId" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BikeInformation">
+          <Key>
+            <PropertyRef Name="BikeId" />
+          </Key>
+          <Property Name="BikeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BikeBrand" Type="nvarchar" MaxLength="100" />
+          <Property Name="BikeModel" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="BikeRegistrationYear" Type="int" />
+          <Property Name="BikeKmDriven" Type="nvarchar" MaxLength="20" />
+          <Property Name="BikeDescription" Type="nvarchar" MaxLength="200" />
+          <Property Name="BikePrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="BikePreferDateTimeIn" Type="datetime" />
+          <Property Name="BikePreferDateTimeOut" Type="datetime" />
+          <Property Name="BikeOwnerName" Type="nvarchar" MaxLength="100" />
+          <Property Name="BikeResonForSale" Type="nvarchar" MaxLength="200" />
+          <Property Name="BikeEngineNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="BikeChasisNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CartDetails">
+          <Key>
+            <PropertyRef Name="CartId" />
+          </Key>
+          <Property Name="CartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SecretToken" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BikeId" Type="int" Nullable="false" />
+          <Property Name="RequestGeneratedBy" Type="nvarchar" MaxLength="10" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CityAreas">
+          <Key>
+            <PropertyRef Name="CAId" />
+          </Key>
+          <Property Name="CAId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="AreaName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CityTable">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="10" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ImageDetails">
+          <Key>
+            <PropertyRef Name="ImgId" />
+          </Key>
+          <Property Name="ImgId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BikeId" Type="int" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContentType" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImgPath" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="MobileOtp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="OTP" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="SecretToken" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="OTPSendCount" Type="int" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentDetails">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentMode" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Amout" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IsCompleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PlacedOrder">
+          <Key>
+            <PropertyRef Name="POId" />
+          </Key>
+          <Property Name="POId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="BikeId" Type="int" Nullable="false" />
+          <Property Name="PaymentId" Type="int" Nullable="false" />
+          <Property Name="IsOpen" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TransactionDetails">
+          <Key>
+            <PropertyRef Name="TransId" />
+          </Key>
+          <Property Name="TransId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="CustomerId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="TxnId" Type="nvarchar" MaxLength="100" />
+          <Property Name="TxnAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="10" />
+          <Property Name="OrderId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TxnStatus" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ResponseCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="ResponseMsg" Type="nvarchar" MaxLength="200" />
+          <Property Name="PaymentMode" Type="nvarchar" MaxLength="10" />
+          <Property Name="IsCompleted" Type="bit" Nullable="false" />
+          <Property Name="TxnDate" Type="datetime" />
+          <Property Name="GatewayName" Type="nvarchar" MaxLength="20" />
+          <Property Name="BankTxnId" Type="nvarchar" MaxLength="10" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentInitiatedDateTime" Type="datetime" />
+          <Property Name="PaymentCompletedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserDetails">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fullname" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserEmailId" Type="nvarchar" MaxLength="100" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="SecretToken" Type="nvarchar(max)" />
+          <Property Name="CurrentLocation" Type="nvarchar" MaxLength="100" />
+          <Property Name="AddressType" Type="int" />
+          <Property Name="LandMark" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsVerified" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="TimeFrom" Type="int" />
+          <Property Name="TimeTo" Type="int" />
+          <Property Name="AMPM" Type="nvarchar" MaxLength="4" />
+          <Property Name="City" Type="int" />
+          <Property Name="Pincode" Type="nvarchar" MaxLength="20" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_BikeCityWise_BikeInformation">
+          <End Role="BikeInformation" Type="Self.BikeInformation" Multiplicity="1" />
+          <End Role="BikeCityWise" Type="Self.BikeCityWise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BikeInformation">
+              <PropertyRef Name="BikeId" />
+            </Principal>
+            <Dependent Role="BikeCityWise">
+              <PropertyRef Name="BikeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BikeCityWise_CityAreas">
+          <End Role="CityAreas" Type="Self.CityAreas" Multiplicity="1" />
+          <End Role="BikeCityWise" Type="Self.BikeCityWise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CityAreas">
+              <PropertyRef Name="CAId" />
+            </Principal>
+            <Dependent Role="BikeCityWise">
+              <PropertyRef Name="CAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BikeCityWise_CityTable">
+          <End Role="CityTable" Type="Self.CityTable" Multiplicity="1" />
+          <End Role="BikeCityWise" Type="Self.BikeCityWise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CityTable">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="BikeCityWise">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CartDetails_BikeInformation">
+          <End Role="BikeInformation" Type="Self.BikeInformation" Multiplicity="1" />
+          <End Role="CartDetails" Type="Self.CartDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BikeInformation">
+              <PropertyRef Name="BikeId" />
+            </Principal>
+            <Dependent Role="CartDetails">
+              <PropertyRef Name="BikeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CityAreas_CityTable">
+          <End Role="CityTable" Type="Self.CityTable" Multiplicity="1" />
+          <End Role="CityAreas" Type="Self.CityAreas" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CityTable">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="CityAreas">
+              <PropertyRef Name="CAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImageDetails_BikeInformation">
+          <End Role="BikeInformation" Type="Self.BikeInformation" Multiplicity="1" />
+          <End Role="ImageDetails" Type="Self.ImageDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BikeInformation">
+              <PropertyRef Name="BikeId" />
+            </Principal>
+            <Dependent Role="ImageDetails">
+              <PropertyRef Name="BikeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentDetails_UserDetails">
+          <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetails">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlacedOrder_PaymentDetails">
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="1" />
+          <End Role="PlacedOrder" Type="Self.PlacedOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentDetails">
+              <PropertyRef Name="PaymentId" />
+            </Principal>
+            <Dependent Role="PlacedOrder">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="stpGetBikedetailsInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="ObickeModelStoreContainer">
+          <EntitySet Name="AddToCart" EntityType="Self.AddToCart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BikeCityWise" EntityType="Self.BikeCityWise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BikeInformation" EntityType="Self.BikeInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CartDetails" EntityType="Self.CartDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CityAreas" EntityType="Self.CityAreas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CityTable" EntityType="Self.CityTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImageDetails" EntityType="Self.ImageDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MobileOtp" EntityType="Self.MobileOtp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlacedOrder" EntityType="Self.PlacedOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionDetails" EntityType="Self.TransactionDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserDetails" EntityType="Self.UserDetails" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BikeCityWise_BikeInformation" Association="Self.FK_BikeCityWise_BikeInformation">
+            <End Role="BikeInformation" EntitySet="BikeInformation" />
+            <End Role="BikeCityWise" EntitySet="BikeCityWise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BikeCityWise_CityAreas" Association="Self.FK_BikeCityWise_CityAreas">
+            <End Role="CityAreas" EntitySet="CityAreas" />
+            <End Role="BikeCityWise" EntitySet="BikeCityWise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BikeCityWise_CityTable" Association="Self.FK_BikeCityWise_CityTable">
+            <End Role="CityTable" EntitySet="CityTable" />
+            <End Role="BikeCityWise" EntitySet="BikeCityWise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CartDetails_BikeInformation" Association="Self.FK_CartDetails_BikeInformation">
+            <End Role="BikeInformation" EntitySet="BikeInformation" />
+            <End Role="CartDetails" EntitySet="CartDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CityAreas_CityTable" Association="Self.FK_CityAreas_CityTable">
+            <End Role="CityTable" EntitySet="CityTable" />
+            <End Role="CityAreas" EntitySet="CityAreas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImageDetails_BikeInformation" Association="Self.FK_ImageDetails_BikeInformation">
+            <End Role="BikeInformation" EntitySet="BikeInformation" />
+            <End Role="ImageDetails" EntitySet="ImageDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetails_UserDetails" Association="Self.FK_PaymentDetails_UserDetails">
+            <End Role="UserDetails" EntitySet="UserDetails" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlacedOrder_PaymentDetails" Association="Self.FK_PlacedOrder_PaymentDetails">
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+            <End Role="PlacedOrder" EntitySet="PlacedOrder" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ObickeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BikeCityWise">
+          <Key>
+            <PropertyRef Name="BCId" />
+          </Key>
+          <Property Name="BCId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BikeId" Type="Int32" Nullable="false" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="CAId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BikeInformation" Relationship="Self.FK_BikeCityWise_BikeInformation" FromRole="BikeCityWise" ToRole="BikeInformation" />
+          <NavigationProperty Name="CityArea" Relationship="Self.FK_BikeCityWise_CityAreas" FromRole="BikeCityWise" ToRole="CityAreas" />
+          <NavigationProperty Name="CityTable" Relationship="Self.FK_BikeCityWise_CityTable" FromRole="BikeCityWise" ToRole="CityTable" />
+        </EntityType>
+        <EntityType Name="BikeInformation">
+          <Key>
+            <PropertyRef Name="BikeId" />
+          </Key>
+          <Property Name="BikeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BikeBrand" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BikeModel" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="BikeRegistrationYear" Type="Int32" />
+          <Property Name="BikeKmDriven" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BikeDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="BikePrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BikePreferDateTimeIn" Type="DateTime" Precision="3" />
+          <Property Name="BikePreferDateTimeOut" Type="DateTime" Precision="3" />
+          <Property Name="BikeOwnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BikeResonForSale" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="BikeEngineNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BikeChasisNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BikeCityWises" Relationship="Self.FK_BikeCityWise_BikeInformation" FromRole="BikeInformation" ToRole="BikeCityWise" />
+          <NavigationProperty Name="ImageDetails" Relationship="Self.FK_ImageDetails_BikeInformation" FromRole="BikeInformation" ToRole="ImageDetails" />
+          <NavigationProperty Name="CartDetails" Relationship="ObickeModel.FK_CartDetails_BikeInformation" FromRole="BikeInformation" ToRole="CartDetail" />
+        </EntityType>
+        <EntityType Name="CityArea">
+          <Key>
+            <PropertyRef Name="CAId" />
+          </Key>
+          <Property Name="CAId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="AreaName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BikeCityWises" Relationship="Self.FK_BikeCityWise_CityAreas" FromRole="CityAreas" ToRole="BikeCityWise" />
+          <NavigationProperty Name="CityTable" Relationship="Self.FK_CityAreas_CityTable" FromRole="CityAreas" ToRole="CityTable" />
+        </EntityType>
+        <EntityType Name="CityTable">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BikeCityWises" Relationship="Self.FK_BikeCityWise_CityTable" FromRole="CityTable" ToRole="BikeCityWise" />
+          <NavigationProperty Name="CityArea" Relationship="Self.FK_CityAreas_CityTable" FromRole="CityTable" ToRole="CityAreas" />
+        </EntityType>
+        <EntityType Name="ImageDetail">
+          <Key>
+            <PropertyRef Name="ImgId" />
+          </Key>
+          <Property Name="ImgId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BikeId" Type="Int32" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImgPath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="BikeInformation" Relationship="Self.FK_ImageDetails_BikeInformation" FromRole="ImageDetails" ToRole="BikeInformation" />
+        </EntityType>
+        <EntityType Name="PaymentDetail">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Amout" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PlacedOrders" Relationship="Self.FK_PlacedOrder_PaymentDetails" FromRole="PaymentDetails" ToRole="PlacedOrder" />
+          <NavigationProperty Name="UserDetail" Relationship="ObickeModel.FK_PaymentDetails_UserDetails" FromRole="PaymentDetail" ToRole="UserDetail" />
+        </EntityType>
+        <EntityType Name="PlacedOrder">
+          <Key>
+            <PropertyRef Name="POId" />
+          </Key>
+          <Property Name="POId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="BikeId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentId" Type="Int32" Nullable="false" />
+          <Property Name="IsOpen" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PaymentDetail" Relationship="Self.FK_PlacedOrder_PaymentDetails" FromRole="PlacedOrder" ToRole="PaymentDetails" />
+        </EntityType>
+        <Association Name="FK_BikeCityWise_BikeInformation">
+          <End Role="BikeInformation" Type="Self.BikeInformation" Multiplicity="1" />
+          <End Role="BikeCityWise" Type="Self.BikeCityWise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BikeInformation">
+              <PropertyRef Name="BikeId" />
+            </Principal>
+            <Dependent Role="BikeCityWise">
+              <PropertyRef Name="BikeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BikeCityWise_CityAreas">
+          <End Role="CityAreas" Type="Self.CityArea" Multiplicity="1" />
+          <End Role="BikeCityWise" Type="Self.BikeCityWise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CityAreas">
+              <PropertyRef Name="CAId" />
+            </Principal>
+            <Dependent Role="BikeCityWise">
+              <PropertyRef Name="CAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BikeCityWise_CityTable">
+          <End Role="CityTable" Type="Self.CityTable" Multiplicity="1" />
+          <End Role="BikeCityWise" Type="Self.BikeCityWise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CityTable">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="BikeCityWise">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImageDetails_BikeInformation">
+          <End Role="BikeInformation" Type="Self.BikeInformation" Multiplicity="1" />
+          <End Role="ImageDetails" Type="Self.ImageDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BikeInformation">
+              <PropertyRef Name="BikeId" />
+            </Principal>
+            <Dependent Role="ImageDetails">
+              <PropertyRef Name="BikeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CityAreas_CityTable">
+          <End Role="CityTable" Type="Self.CityTable" Multiplicity="1" />
+          <End Role="CityAreas" Type="Self.CityArea" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CityTable">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="CityAreas">
+              <PropertyRef Name="CAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlacedOrder_PaymentDetails">
+          <End Role="PaymentDetails" Type="Self.PaymentDetail" Multiplicity="1" />
+          <End Role="PlacedOrder" Type="Self.PlacedOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentDetails">
+              <PropertyRef Name="PaymentId" />
+            </Principal>
+            <Dependent Role="PlacedOrder">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ObickeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BikeCityWises" EntityType="Self.BikeCityWise" />
+          <EntitySet Name="BikeInformations" EntityType="Self.BikeInformation" />
+          <EntitySet Name="CityAreas" EntityType="Self.CityArea" />
+          <EntitySet Name="CityTables" EntityType="Self.CityTable" />
+          <EntitySet Name="ImageDetails" EntityType="Self.ImageDetail" />
+          <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetail" />
+          <EntitySet Name="PlacedOrders" EntityType="Self.PlacedOrder" />
+          <AssociationSet Name="FK_BikeCityWise_BikeInformation" Association="Self.FK_BikeCityWise_BikeInformation">
+            <End Role="BikeInformation" EntitySet="BikeInformations" />
+            <End Role="BikeCityWise" EntitySet="BikeCityWises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BikeCityWise_CityAreas" Association="Self.FK_BikeCityWise_CityAreas">
+            <End Role="CityAreas" EntitySet="CityAreas" />
+            <End Role="BikeCityWise" EntitySet="BikeCityWises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BikeCityWise_CityTable" Association="Self.FK_BikeCityWise_CityTable">
+            <End Role="CityTable" EntitySet="CityTables" />
+            <End Role="BikeCityWise" EntitySet="BikeCityWises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImageDetails_BikeInformation" Association="Self.FK_ImageDetails_BikeInformation">
+            <End Role="BikeInformation" EntitySet="BikeInformations" />
+            <End Role="ImageDetails" EntitySet="ImageDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CityAreas_CityTable" Association="Self.FK_CityAreas_CityTable">
+            <End Role="CityTable" EntitySet="CityTables" />
+            <End Role="CityAreas" EntitySet="CityAreas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlacedOrder_PaymentDetails" Association="Self.FK_PlacedOrder_PaymentDetails">
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+            <End Role="PlacedOrder" EntitySet="PlacedOrders" />
+          </AssociationSet>
+          <FunctionImport Name="stpGetBikedetailsInfo" ReturnType="Collection(ObickeModel.stpGetBikedetailsInfo_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="TransactionDetails" EntityType="ObickeModel.TransactionDetail" />
+          <EntitySet Name="MobileOtps" EntityType="ObickeModel.MobileOtp" />
+          <EntitySet Name="AddToCarts" EntityType="ObickeModel.AddToCart" />
+          <EntitySet Name="CartDetails" EntityType="ObickeModel.CartDetail" />
+          <AssociationSet Name="FK_CartDetails_BikeInformation" Association="ObickeModel.FK_CartDetails_BikeInformation">
+            <End Role="BikeInformation" EntitySet="BikeInformations" />
+            <End Role="CartDetail" EntitySet="CartDetails" />
+          </AssociationSet>
+          <EntitySet Name="UserDetails" EntityType="ObickeModel.UserDetail" />
+          <AssociationSet Name="FK_PaymentDetails_UserDetails" Association="ObickeModel.FK_PaymentDetails_UserDetails">
+            <End Role="UserDetail" EntitySet="UserDetails" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="stpGetBikedetailsInfo_Result">
+          <Property Type="Int32" Name="BikeId" Nullable="false" />
+          <Property Type="Decimal" Name="BikeModel" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="BikeBrand" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BikeDescription" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="BikeKmDriven" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="BikeRegistrationYear" Nullable="true" />
+          <Property Type="Decimal" Name="BikePrice" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="BikeOwnerName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="imgId" Nullable="false" />
+          <Property Type="String" Name="FileName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ImgPath" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <EntityType Name="TransactionDetail">
+          <Key>
+            <PropertyRef Name="TransId" />
+          </Key>
+          <Property Name="TransId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="TxnId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TxnAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Currency" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="OrderId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TxnStatus" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ResponseCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ResponseMsg" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentMode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+          <Property Name="TxnDate" Type="DateTime" Precision="3" />
+          <Property Name="GatewayName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BankTxnId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentInitiatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="PaymentCompletedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="MobileOtp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MobileNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="OTP" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SecretToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="OTPSendCount" Type="Int32" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="AddToCart">
+          <Key>
+            <PropertyRef Name="CartId" />
+          </Key>
+          <Property Name="CartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SecretToken" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BikeId" Type="Int32" Nullable="false" />
+          <Property Name="InitiatedThrough" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="CartDetail">
+          <Key>
+            <PropertyRef Name="CartId" />
+          </Key>
+          <Property Name="CartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SecretToken" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BikeId" Type="Int32" Nullable="false" />
+          <Property Name="RequestGeneratedBy" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BikeInformation" Relationship="ObickeModel.FK_CartDetails_BikeInformation" FromRole="CartDetail" ToRole="BikeInformation" />
+        </EntityType>
+        <Association Name="FK_CartDetails_BikeInformation">
+          <End Type="ObickeModel.BikeInformation" Role="BikeInformation" Multiplicity="1" />
+          <End Type="ObickeModel.CartDetail" Role="CartDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BikeInformation">
+              <PropertyRef Name="BikeId" />
+            </Principal>
+            <Dependent Role="CartDetail">
+              <PropertyRef Name="BikeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserEmailId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SecretToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentLocation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AddressType" Type="Int32" />
+          <Property Name="LandMark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsVerified" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="TimeFrom" Type="Int32" />
+          <Property Name="TimeTo" Type="Int32" />
+          <Property Name="AMPM" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="Pincode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PaymentDetails" Relationship="ObickeModel.FK_PaymentDetails_UserDetails" FromRole="UserDetail" ToRole="PaymentDetail" />
+        </EntityType>
+        <Association Name="FK_PaymentDetails_UserDetails">
+          <End Type="ObickeModel.UserDetail" Role="UserDetail" Multiplicity="1" />
+          <End Type="ObickeModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetail">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ObickeModelStoreContainer" CdmEntityContainer="ObickeEntities">
+          <EntitySetMapping Name="BikeCityWises">
+            <EntityTypeMapping TypeName="ObickeModel.BikeCityWise">
+              <MappingFragment StoreEntitySet="BikeCityWise">
+                <ScalarProperty Name="BCId" ColumnName="BCId" />
+                <ScalarProperty Name="BikeId" ColumnName="BikeId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="CAId" ColumnName="CAId" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BikeInformations">
+            <EntityTypeMapping TypeName="ObickeModel.BikeInformation">
+              <MappingFragment StoreEntitySet="BikeInformation">
+                <ScalarProperty Name="BikeId" ColumnName="BikeId" />
+                <ScalarProperty Name="BikeBrand" ColumnName="BikeBrand" />
+                <ScalarProperty Name="BikeModel" ColumnName="BikeModel" />
+                <ScalarProperty Name="BikeRegistrationYear" ColumnName="BikeRegistrationYear" />
+                <ScalarProperty Name="BikeKmDriven" ColumnName="BikeKmDriven" />
+                <ScalarProperty Name="BikeDescription" ColumnName="BikeDescription" />
+                <ScalarProperty Name="BikePrice" ColumnName="BikePrice" />
+                <ScalarProperty Name="BikePreferDateTimeIn" ColumnName="BikePreferDateTimeIn" />
+                <ScalarProperty Name="BikePreferDateTimeOut" ColumnName="BikePreferDateTimeOut" />
+                <ScalarProperty Name="BikeOwnerName" ColumnName="BikeOwnerName" />
+                <ScalarProperty Name="BikeResonForSale" ColumnName="BikeResonForSale" />
+                <ScalarProperty Name="BikeEngineNo" ColumnName="BikeEngineNo" />
+                <ScalarProperty Name="BikeChasisNo" ColumnName="BikeChasisNo" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CityAreas">
+            <EntityTypeMapping TypeName="ObickeModel.CityArea">
+              <MappingFragment StoreEntitySet="CityAreas">
+                <ScalarProperty Name="CAId" ColumnName="CAId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CityTables">
+            <EntityTypeMapping TypeName="ObickeModel.CityTable">
+              <MappingFragment StoreEntitySet="CityTable">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImageDetails">
+            <EntityTypeMapping TypeName="ObickeModel.ImageDetail">
+              <MappingFragment StoreEntitySet="ImageDetails">
+                <ScalarProperty Name="ImgId" ColumnName="ImgId" />
+                <ScalarProperty Name="BikeId" ColumnName="BikeId" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="ImgPath" ColumnName="ImgPath" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentDetails">
+            <EntityTypeMapping TypeName="ObickeModel.PaymentDetail">
+              <MappingFragment StoreEntitySet="PaymentDetails">
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="PaymentName" ColumnName="PaymentName" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Amout" ColumnName="Amout" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlacedOrders">
+            <EntityTypeMapping TypeName="ObickeModel.PlacedOrder">
+              <MappingFragment StoreEntitySet="PlacedOrder">
+                <ScalarProperty Name="POId" ColumnName="POId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BikeId" ColumnName="BikeId" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="stpGetBikedetailsInfo" FunctionName="ObickeModel.Store.stpGetBikedetailsInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ObickeModel.stpGetBikedetailsInfo_Result">
+                <ScalarProperty Name="BikeId" ColumnName="BikeId" />
+                <ScalarProperty Name="BikeModel" ColumnName="BikeModel" />
+                <ScalarProperty Name="BikeBrand" ColumnName="BikeBrand" />
+                <ScalarProperty Name="BikeDescription" ColumnName="BikeDescription" />
+                <ScalarProperty Name="BikeKmDriven" ColumnName="BikeKmDriven" />
+                <ScalarProperty Name="BikeRegistrationYear" ColumnName="BikeRegistrationYear" />
+                <ScalarProperty Name="BikePrice" ColumnName="BikePrice" />
+                <ScalarProperty Name="BikeOwnerName" ColumnName="BikeOwnerName" />
+                <ScalarProperty Name="imgId" ColumnName="imgId" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="ImgPath" ColumnName="ImgPath" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="TransactionDetails">
+            <EntityTypeMapping TypeName="ObickeModel.TransactionDetail">
+              <MappingFragment StoreEntitySet="TransactionDetails">
+                <ScalarProperty Name="PaymentCompletedDateTime" ColumnName="PaymentCompletedDateTime" />
+                <ScalarProperty Name="PaymentInitiatedDateTime" ColumnName="PaymentInitiatedDateTime" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="BankTxnId" ColumnName="BankTxnId" />
+                <ScalarProperty Name="GatewayName" ColumnName="GatewayName" />
+                <ScalarProperty Name="TxnDate" ColumnName="TxnDate" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="ResponseMsg" ColumnName="ResponseMsg" />
+                <ScalarProperty Name="ResponseCode" ColumnName="ResponseCode" />
+                <ScalarProperty Name="TxnStatus" ColumnName="TxnStatus" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="TxnAmount" ColumnName="TxnAmount" />
+                <ScalarProperty Name="TxnId" ColumnName="TxnId" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="TransId" ColumnName="TransId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MobileOtps">
+            <EntityTypeMapping TypeName="ObickeModel.MobileOtp">
+              <MappingFragment StoreEntitySet="MobileOtp">
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="OTPSendCount" ColumnName="OTPSendCount" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SecretToken" ColumnName="SecretToken" />
+                <ScalarProperty Name="OTP" ColumnName="OTP" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddToCarts">
+            <EntityTypeMapping TypeName="ObickeModel.AddToCart">
+              <MappingFragment StoreEntitySet="AddToCart">
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="InitiatedThrough" ColumnName="InitiatedThrough" />
+                <ScalarProperty Name="BikeId" ColumnName="BikeId" />
+                <ScalarProperty Name="SecretToken" ColumnName="SecretToken" />
+                <ScalarProperty Name="CartId" ColumnName="CartId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CartDetails">
+            <EntityTypeMapping TypeName="ObickeModel.CartDetail">
+              <MappingFragment StoreEntitySet="CartDetails">
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="RequestGeneratedBy" ColumnName="RequestGeneratedBy" />
+                <ScalarProperty Name="BikeId" ColumnName="BikeId" />
+                <ScalarProperty Name="SecretToken" ColumnName="SecretToken" />
+                <ScalarProperty Name="CartId" ColumnName="CartId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDetails">
+            <EntityTypeMapping TypeName="ObickeModel.UserDetail">
+              <MappingFragment StoreEntitySet="UserDetails">
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="AMPM" ColumnName="AMPM" />
+                <ScalarProperty Name="TimeTo" ColumnName="TimeTo" />
+                <ScalarProperty Name="TimeFrom" ColumnName="TimeFrom" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+                <ScalarProperty Name="LandMark" ColumnName="LandMark" />
+                <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+                <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+                <ScalarProperty Name="SecretToken" ColumnName="SecretToken" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="UserEmailId" ColumnName="UserEmailId" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
