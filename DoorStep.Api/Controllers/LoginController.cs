@@ -13,7 +13,6 @@ using System.Security.Claims;
 using System.Web;
 using System.Web.Http;
 
-
 namespace DoorStep.Api.Controllers
 {
     public class LoginController : ApiController
